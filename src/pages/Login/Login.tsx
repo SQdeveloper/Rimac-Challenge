@@ -9,15 +9,26 @@ const Login = () => {
                     <img src="src/assets/images/image 220.png" alt="banner" />
                 </div>
                 <section className={styles.login__form}>
-                    <div className={styles.login__info}>                    
-                        <span className={styles.login__tagPromo}>
-                            Seguro Salud Flexible
-                        </span>
-                        <div>
-                            <h2 className={styles.login__title}>Creado para ti y tu familia</h2>
-                            <p>Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría. 100% online.</p>
+                    <div>
+                        <div className={styles.login__info}>                    
+                            <span className={styles.login__tagPromo}>
+                                Seguro Salud Flexible
+                            </span>
+                            <div>
+                                <h2 className={styles.login__title}>Creado para ti y tu familia</h2>
+                                <p>Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría. 100% online.</p>
+                            </div>
+                        </div>                
+                        <div className={styles.login__infoResponsive}>
+                            <div>
+                                <span className={styles.login__tagPromo}>
+                                    Seguro Salud Flexible
+                                </span>
+                                <h2 className={styles.login__title}>Creado para ti y tu familia</h2>
+                            </div>
+                            <img src="src/assets/images/image 220.png" alt="banner" />
                         </div>
-                    </div>                
+                    </div>
                     <div className={styles.login__contentInputs}>
                         <div>
                             <div className={styles.login__contentselect}>
