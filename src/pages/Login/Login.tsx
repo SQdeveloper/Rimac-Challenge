@@ -21,12 +21,16 @@ const Login = () => {
                         </div>                
                         <div className={styles.login__infoResponsive}>
                             <div>
-                                <span className={styles.login__tagPromo}>
-                                    Seguro Salud Flexible
-                                </span>
-                                <h2 className={styles.login__title}>Creado para ti y tu familia</h2>
+                                <div>
+                                    <span className={styles.login__tagPromo}>
+                                        Seguro Salud Flexible
+                                    </span>
+                                    <h2 className={styles.login__title}>Creado para ti y tu familia</h2>
+                                </div>
+                                <img src="src/assets/images/image 220.png" alt="banner" />
                             </div>
-                            <img src="src/assets/images/image 220.png" alt="banner" />
+                            <hr />
+                            <p>Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría. 100% online.</p>
                         </div>
                     </div>
                     <div className={styles.login__contentInputs}>
