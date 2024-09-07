@@ -1,11 +1,14 @@
 .header {    
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;    
     align-items: center;
-    max-width: 1150px;
+    max-width: 1360px;
     width: 100%;
-    margin: 0 auto;
-    padding: 1rem 0;
+    margin: 0 auto;    
+    padding: 1rem 120px;
     
     &__info {
         display: flex;

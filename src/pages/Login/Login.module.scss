@@ -1,8 +1,9 @@
 .login {    
     display: grid;
     grid-template-columns: 1fr 1fr;
-    max-width: 1150px;
-    margin: 3rem auto;
+    max-width: 1360px;
+    margin: calc(3rem + 64px) auto 3rem;
+    padding: 0 120px;
     gap: 6rem;        
 
     &__contentImage {
@@ -141,5 +142,6 @@
     position: relative;
     overflow: hidden;
     min-height: calc(100vh - 106px);
-
+    display: flex;
+    align-items: center;
 }
