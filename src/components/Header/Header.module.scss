@@ -1,5 +1,31 @@
-.header {
-    padding: 1rem 1rem;
+.header {    
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;    
+    align-items: center;
+    max-width: 1150px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 0;
+    
+    &__info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;        
+        
+        > span {
+            font-size: 12px;            
+            font-weight: bolder;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-weight: bold;                        
+
+            span {
+                font-size: 18px;
+            }
+        }
+    }
 }
