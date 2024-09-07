@@ -1,14 +1,75 @@
-import { Link } from 'react-router-dom';
+import { ChangeEvent, useState } from 'react';
 import styles from './Login.module.scss'
 
+export type document = 'dni' | 'ruc';
+
 const Login = () => {
+    const [documentType, setDocumentType] = useState<document>('dni');
+    const [document, setDocument] = useState('');
+    const [number, setNumber] = useState('');
+    const [errorDocument, setErrorDocument] = useState('');
+    const [errorNumber, setErrorNumber] = useState('');
+    const [errorPrivacity, setErrorPrivacity] = useState(false);
+    const [errorComunication, setErrorComunication] = useState(false);
+    const [privacityPolicy, setPrivacityPolicy] = useState(false);
+    const [comunicationPolicy, setComunicationPolicy] = useState(false);
+
+    const handleChangeDocumentType = (e:ChangeEvent<HTMLSelectElement>)=>{
+        const value = e.target.value as document;        
+        setDocumentType(value);
+        setDocument('');
+        setErrorDocument('');
+    }
+
+    const handleChangeDocument = (e: ChangeEvent<HTMLInputElement>)=>{
+        const value = e.target.value;
+        
+        //Validations
+        if(!/^\d*$/.test(value)) return;
+        setDocument(value);
+        if( documentType === 'dni' && value.length < 8) return setErrorDocument('*El DNI debe tener 8 dígitos.');
+        if( documentType === 'ruc' && value.length < 11) return setErrorDocument('*El RUC debe tener 11 dígitos.');
+        setErrorDocument('')
+
+    }
+
+    //Validation Celphone
+    const handleChangeNumber = (e: ChangeEvent<HTMLInputElement>)=>{
+        const value = e.target.value;
+        
+        if(!/^\d*$/.test(value)) return;        
+        setNumber(value);
+
+        if(value.length < 9) return setErrorNumber('*Ingresa un número valido.')
+        setErrorNumber('')
+    }
+
+    const handleSubmit = (e: React.FormEvent)=>{
+        e.preventDefault();
+        
+        if(!privacityPolicy) setErrorPrivacity(true);
+        if(!comunicationPolicy) setErrorComunication(true);
+        if(documentType === 'dni' && document.length < 8) setErrorDocument('*El DNI debe tener 8 dígitos')
+        if(documentType === 'ruc' && document.length < 11) setErrorDocument('*El RUC debe tener 8 dígitos')
+        if(number.length < 9) return setErrorNumber('*Ingresa un número valido.')
+    }
+
+    //Policy
+    const handleChangePrivacityPolicy = (e: ChangeEvent<HTMLInputElement>)=>{
+        setPrivacityPolicy(e.target.checked);
+    }
+
+    const handleChangeComunicationPolicy = (e: ChangeEvent<HTMLInputElement>)=>{
+        setComunicationPolicy(e.target.checked);
+    }
+
     return (
         <div className={styles.content}>
             <div className={styles.login}>            
                 <div className={styles.login__contentImage}>
                     <img src="src/assets/images/image 220.png" alt="banner" />
                 </div>
-                <section className={styles.login__form}>
+                <form onSubmit={handleSubmit} className={styles.login__form}>
                     <div>
                         <div className={styles.login__info}>                    
                             <span className={styles.login__tagPromo}>
@@ -36,29 +97,66 @@ const Login = () => {
                     <div className={styles.login__contentInputs}>
                         <div>
                             <div className={styles.login__contentselect}>
-                                <select name="" id="">
-                                    <option value="">DNI</option>
+                                <select name="" id="" onChange={handleChangeDocumentType}>
+                                    <option value="dni">DNI</option>
+                                    <option value="ruc">RUC</option>
                                 </select>
                             </div>
-                            <input type="text" placeholder='Nro. de documento' />                        
+                            <input 
+                                value={document} 
+                                onChange={handleChangeDocument} 
+                                type="text" 
+                                placeholder='Nro. de documento' 
+                                maxLength={documentType == 'dni' ? 8 : 11}
+                            />                        
                         </div>
+                        {
+                            errorDocument &&
+                                <span className={styles.login__error}>{errorDocument}</span>
+                        }
                         <div>
-                            <input type="text" placeholder='Celular' />
+                            <input 
+                                type="text" 
+                                placeholder='Celular' 
+                                value={number}
+                                onChange={handleChangeNumber}
+                                maxLength={9}
+                            />
                         </div>
+                        {
+                            errorNumber &&
+                                <span className={styles.login__error}>{errorNumber}</span>
+                        }
                     </div>
                     <div className={styles.login__contentChecks}>
                         <div>
-                            <input type="checkbox"/>
-                            <span>Acepto la Política de Privacidad</span>
+                            <input onChange={handleChangePrivacityPolicy} id='privacity' type="checkbox"/>
+                            <label 
+                                htmlFor="privacity" 
+                                className={`${errorPrivacity && `${styles['login__input--error']}`}`}
+                            >
+                                <div>
+                                    <img src="src/assets/icons/check.svg" alt="check" />
+                                </div>
+                                <span>Acepto la Política de Privacidad</span>    
+                            </label>                            
                         </div>                    
                         <div>
-                            <input type="checkbox"/>
-                            <span>Acepto la Política Comunicaciones Comerciales</span>
+                            <input onChange={handleChangeComunicationPolicy} id='comunicacion' type="checkbox"/>
+                            <label 
+                                htmlFor="comunicacion"
+                                className={`${errorComunication && `${styles['login__input--error']}`}`}
+                            >
+                                <div>
+                                    <img src="src/assets/icons/check.svg" alt="check" />
+                                </div>
+                                <span>Acepto la Política Comunicaciones Comerciales</span>    
+                            </label>                            
                         </div>                    
                         <a href="">Aplican Términos y Condiciones.</a>
                     </div>
-                    <Link className={styles.login__buttonSend} to={'/dashboard'}>Cotiza aquí</Link>                
-                </section>
+                    <button type='submit' className={styles.login__buttonSend}>Cotiza aquí</button>                
+                </form>
                 <img className={`${styles['login__gradient--pink']} ${styles['login__gradient']}`} src="src/assets/images/gradient/blur-asset-pink.png" alt="gradient" />
                 <img className={`${styles['login__gradient--green']} ${styles['login__gradient']}`} src="src/assets/images/gradient/blur-asset-green.png" alt="gradient" />
             </div>
