@@ -15,5 +15,13 @@
         align-items: center;
         font-size: 14px;
         font-weight: 400;
+
+        @media (max-width: 1250px) {
+            padding: 32px 30px;
+        }
+    
+        @media (max-width: 768px) {
+            padding: 32px 24px;   
+        }
     }
 }

@@ -12,11 +12,13 @@
 
     @media (max-width: 1000px) {
         gap: 2.5rem;
+        margin: calc(2rem + 64px) auto 2rem;
     }    
-
+    
     @media (max-width: 768px) {
         grid-template-columns: 1fr;   
         width: 100%;
+        margin: calc(2rem + 64px) auto 2rem;        
     }
 
     @media (max-width: 410px) {
@@ -24,17 +26,17 @@
     }
 
     &__contentImage {
+        @media (max-width: 768px) {
+            display: none;
+        }
+
         img {
             width: 100%;
             object-fit: cover;
             border-radius: 1rem;
             max-height: 590px;
             aspect-ratio: 79/92;
-
-            @media (max-width: 768px) {
-                display: none;
-            }
-        }
+        }        
     }
 
     &__tagPromo {
@@ -188,6 +190,10 @@
             width: 150px;
             object-fit: cover;
             border-radius: 1rem;
+            
+            @media (max-width: 450px) {
+                aspect-ratio: 7/8;
+            }
         }
         
         @media (max-width: 768px) {
