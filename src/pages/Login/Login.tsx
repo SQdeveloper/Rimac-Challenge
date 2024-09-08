@@ -1,5 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import styles from './Login.module.scss'
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/authContext';
 
 export type document = 'dni' | 'ruc';
 
@@ -13,6 +15,8 @@ const Login = () => {
     const [errorComunication, setErrorComunication] = useState(false);
     const [privacityPolicy, setPrivacityPolicy] = useState(false);
     const [comunicationPolicy, setComunicationPolicy] = useState(false);
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     const handleChangeDocumentType = (e:ChangeEvent<HTMLSelectElement>)=>{
         const value = e.target.value as document;        
@@ -47,11 +51,42 @@ const Login = () => {
     const handleSubmit = (e: React.FormEvent)=>{
         e.preventDefault();
         
-        if(!privacityPolicy) setErrorPrivacity(true);
-        if(!comunicationPolicy) setErrorComunication(true);
-        if(documentType === 'dni' && document.length < 8) setErrorDocument('*El DNI debe tener 8 dígitos')
-        if(documentType === 'ruc' && document.length < 11) setErrorDocument('*El RUC debe tener 8 dígitos')
-        if(number.length < 9) return setErrorNumber('*Ingresa un número valido.')
+        // Resetear los errores
+        setErrorPrivacity(false);
+        setErrorComunication(false);
+        setErrorDocument('');
+        setErrorNumber('');
+
+        // Validaciones
+        let hasErrors = false;
+
+        if (!privacityPolicy) {
+            setErrorPrivacity(true);
+            hasErrors = true;
+        }
+        if (!comunicationPolicy) {
+            setErrorComunication(true);
+            hasErrors = true;
+        }
+        if (documentType === 'dni' && document.length < 8) {
+            setErrorDocument('*El DNI debe tener 8 dígitos');
+            hasErrors = true;
+        }
+        if (documentType === 'ruc' && document.length < 11) {
+            setErrorDocument('*El RUC debe tener 11 dígitos');
+            hasErrors = true;
+        }
+        if (number.length < 9) {
+            setErrorNumber('*Ingresa un número valido.');
+            hasErrors = true;
+        }
+
+        // Si hay errores, no redirigir
+        if (hasErrors) return;
+
+        // Redirigir a la página de /Planes si no hay errores
+        login();
+        navigate('/Planes');
     }
 
     //Policy
