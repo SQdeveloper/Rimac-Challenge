@@ -3,8 +3,12 @@ import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import styles from './Plans.module.scss';
 import CardPlan from "../../components/CardPlan/CardPlan";
 import CardPlanDetails from "../../components/CardPlanDetails/CardPlanDetails";
+import usePlans from "../../hooks/usePlans";
+import { useUser } from "../../context/userContext";
 
 const Plans = () => {    
+    const { user } = useUser();        
+    const { plans } = usePlans();
     
     return (
         <div className={styles.plans}>
@@ -17,7 +21,7 @@ const Plans = () => {
                 <div className={styles.plans__main}>
                     <aside>
                         <h2>
-                            Rocío ¿Para quién deseas cotizar?
+                            {user.name} ¿Para quién deseas cotizar?
                         </h2>
                         <p>Selecciona la opción que se ajuste más a tus necesidades.</p>                    
                     </aside>
@@ -38,9 +42,12 @@ const Plans = () => {
                 </div>
             </div >
             <div className={styles.plans__details}>
-                <CardPlanDetails/>
-                <CardPlanDetails/>
-                <CardPlanDetails/>
+                {
+                    plans && plans.length > 0 &&
+                        plans.map((plan, index) => (
+                            <CardPlanDetails key={index} plan={plan}/>
+                        ))
+                }                   
             </div>
         </div>
     );

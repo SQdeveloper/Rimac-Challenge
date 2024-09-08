@@ -1,6 +1,7 @@
 // UserContext.tsx
-import { createContext, useState, useContext } from 'react';
-import { fetchUserData as fetchUserService } from '../services/userService'; // Importar el servicio
+import { createContext, useState, useContext, SetStateAction, Dispatch } from 'react';
+import { fetchData as fetchUserService } from '../services/userService'; // Importar el servicio
+import { Plans } from '../types/plans';
 
 interface User {
   document: string;
@@ -14,11 +15,19 @@ interface UserContextType {
   user: User;
   updateUser: (data: Partial<User>) => void;
   fetchUserData: () => Promise<void>;
+  selectedPlan: Plans;
+  setSelectedPlan: Dispatch<SetStateAction<Plans>>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+  const [selectedPlan, setSelectedPlan] = useState<Plans>({
+    name: '',
+    age: 0,
+    description: '',
+    price: 0
+  });
   const [user, setUser] = useState<User>({
     document: '',
     number: '',
@@ -30,7 +39,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   const fetchUserData = async () => {
     try {
-      const data = await fetchUserService();
+      const data = await fetchUserService('user');
       updateUser({
         name: data.name,
         lastName: data.lastName,
@@ -42,7 +51,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, updateUser, fetchUserData }}>
+    <UserContext.Provider value={{ user, updateUser, fetchUserData, selectedPlan, setSelectedPlan }}>
       {children}
     </UserContext.Provider>
   );
