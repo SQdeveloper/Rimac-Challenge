@@ -1,16 +1,11 @@
-import { useUser } from "../../context/userContext";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
+import styles from './Plans.module.scss';
 
-const Plans = () => {
-    const { user } = useUser();
+const Plans = () => {    
     
     return (
-        <div>
-            <h1>Plans</h1>            
-            <h1>Plans</h1>            
-            <h1>Plans</h1>            
-            <h1>Plans</h1>            
-            <span>{user?.document}</span>
-            <span>{user?.name}</span>
+        <div className={styles.plans}>
+            <Breadcrumb prev/>
         </div>
     );
 };

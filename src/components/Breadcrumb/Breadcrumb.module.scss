@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+
+.bread {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-purple;
+    padding: 16px 0;
+    font-size: 16px;
+    margin-top: 64px;    
+    gap: 16px;
+    color: $color-gray-purple;
+
+
+    > div {
+        display: flex;        
+        gap: 16px;        
+    }
+
+    &__number {
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+        border-radius: 100%;
+        width: 24px;
+        height: 24px;
+        padding-bottom: 4px;
+        font-size: 12px;        
+        border: 1px solid $color-gray-purple;            
+        color: $color-gray-purple;            
+        background-color: transparent;
+    }
+
+    &__content {
+        &--active {
+            span {
+                font-weight: 700;
+                color: $color-black
+            }
+            
+            div {
+                border: none;
+                background-color: $color-purple-strong;
+                color: white;
+            }
+        }                
+    }
+}
