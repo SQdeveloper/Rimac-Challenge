@@ -1,0 +1,62 @@
+@import '../../styles/variables';
+
+.card {    
+    flex: 1;
+
+    input {
+        display: none;
+    }
+    
+    input:checked + label {
+        border-color: $color-black;
+        
+        div {
+            background-color: $color-green;
+            border-color: $color-green;            
+        }
+    }    
+    
+    label {
+        display: flex;        
+        flex-direction: column;
+        align-items: end;
+        background-color: white;
+        border-radius: 24px;
+        padding: 16px 24px;
+        overflow: hidden;
+        border: 3px solid white;
+        box-shadow: 0px 1px 32px 0px rgba(174, 172, 243, 0.35);
+
+        > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $color-gray-purple;
+            border-radius: 100%;
+            width: 24px;
+            height: 24px;                        
+        } 
+
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+    
+            h3 {
+                font-size: 20px;
+                font-weight: 900;
+            }
+    
+            p {
+                font-size: 12px;
+                font-weight: 400;
+            }
+    
+            img {
+                width: 48px;
+                height: 48px;
+            }
+        }
+    }
+    
+}

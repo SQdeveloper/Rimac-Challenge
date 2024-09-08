@@ -1,5 +1,59 @@
 @import '../../styles/variables';
 
 .plans {
-    background-color: $color-purple;
+    background-color: $color-purple-light;
+
+    &__content {
+        max-width: 1360px;
+        padding: 0 120px;
+        margin: 0 auto;
+    }
+
+    &__back {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 18px;
+        color: $color-purple-strong;
+        margin: 3rem 0;
+    }
+
+    &__main {
+        max-width: 544px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        > aside {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
+
+            h2 {
+                font-size: 40px;
+                font-weight: 700;
+            }
+            p {
+                font-size: 16px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    &__options {
+        display: flex;
+        gap: 32px;
+        justify-content: space-between;
+
+    }
+
+    &__details {
+        display: flex;
+        gap: 32px;
+        max-width: 928px;
+        margin: 0 auto;
+        margin-top: 1.5rem;
+    }
 }
