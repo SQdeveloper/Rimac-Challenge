@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import styles from './Login.module.scss'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
+import { useUser } from '../../context/userContext';
 
 export type document = 'dni' | 'ruc';
 
@@ -16,6 +17,7 @@ const Login = () => {
     const [privacityPolicy, setPrivacityPolicy] = useState(false);
     const [comunicationPolicy, setComunicationPolicy] = useState(false);
     const { login } = useAuth();
+    const { updateUser, fetchUserData } = useUser();
     const navigate = useNavigate();
 
     const handleChangeDocumentType = (e:ChangeEvent<HTMLSelectElement>)=>{
@@ -81,11 +83,15 @@ const Login = () => {
             hasErrors = true;
         }
 
-        // Si hay errores, no redirigir
         if (hasErrors) return;
 
-        // Redirigir a la página de /Planes si no hay errores
+        //Guardar datos del formulario
+        updateUser({ document, number });
+        fetchUserData();
+
+        //Confirmo la autenticación
         login();
+        
         navigate('/Planes');
     }
 
