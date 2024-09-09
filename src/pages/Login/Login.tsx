@@ -110,7 +110,7 @@ const Login = () => {
         <div className={styles.content}>
             <div className={styles.login}>            
                 <div className={styles.login__contentImage}>
-                    <img src="src/assets/images/image 220.png" alt="banner" />
+                    <img src="/images/image 220.png" alt="banner" />
                 </div>
                 <form onSubmit={handleSubmit} className={styles.login__form}>
                     <div>
@@ -131,7 +131,7 @@ const Login = () => {
                                     </span>
                                     <h2 className={styles.login__title}>Creado para ti y tu familia</h2>
                                 </div>
-                                <img src="src/assets/images/image 220.png" alt="banner" />
+                                <img src="/images/image 220.png" alt="banner" />
                             </div>
                             <hr />
                             <p>Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría. 100% online.</p>
@@ -179,7 +179,7 @@ const Login = () => {
                                 className={`${errorPrivacity && `${styles['login__input--error']}`}`}
                             >
                                 <div>
-                                    <img src="src/assets/icons/check.svg" alt="check" />
+                                    <img src="/icons/check.svg" alt="check" />
                                 </div>
                                 <span>Acepto la Política de Privacidad</span>    
                             </label>                            
@@ -191,7 +191,7 @@ const Login = () => {
                                 className={`${errorComunication && `${styles['login__input--error']}`}`}
                             >
                                 <div>
-                                    <img src="src/assets/icons/check.svg" alt="check" />
+                                    <img src="/icons/check.svg" alt="check" />
                                 </div>
                                 <span>Acepto la Política Comunicaciones Comerciales</span>    
                             </label>                            
@@ -200,8 +200,8 @@ const Login = () => {
                     </div>
                     <button type='submit' className={styles.login__buttonSend}>Cotiza aquí</button>                
                 </form>
-                <img className={`${styles['login__gradient--pink']} ${styles['login__gradient']}`} src="src/assets/images/gradient/blur-asset-pink.png" alt="gradient" />
-                <img className={`${styles['login__gradient--green']} ${styles['login__gradient']}`} src="src/assets/images/gradient/blur-asset-green.png" alt="gradient" />
+                <img className={`${styles['login__gradient--pink']} ${styles['login__gradient']}`} src="/images/gradient/blur-asset-pink.png" alt="gradient" />
+                <img className={`${styles['login__gradient--green']} ${styles['login__gradient']}`} src="/images/gradient/blur-asset-green.png" alt="gradient" />
             </div>
         </div>
     );

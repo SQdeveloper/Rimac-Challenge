@@ -24,9 +24,9 @@ const Plans = () => {
     }
 
     const urls = [
-        'src/assets/icons/IcHomeLight.svg',
-        'src/assets/icons/IcHospitalLight.svg',
-        'src/assets/icons/IcHomeLight.svg'
+        '/icons/IcHomeLight.svg',
+        '/icons/IcHospitalLight.svg',
+        '/icons/IcHomeLight.svg'
     ]
 
     return (
@@ -48,14 +48,14 @@ const Plans = () => {
                         idInput="for-me"
                         title="Para mí" 
                         description="Cotiza tu seguro de salud y agrega familiares si así lo deseas." 
-                        image="src/assets/icons/IcProtectionLight.svg"
+                        image="/icons/IcProtectionLight.svg"
                         />                                
                     <CardPlan 
                         handleChangeInput={handleChangeInputForsomeone}
                         idInput="for-someone"
                         title="Para alguien más" 
                         description="Realiza una cotización para uno de tus familiares o cualquier persona." 
-                        image="src/assets/icons/IcAddUserLight.svg"
+                        image="/icons/IcAddUserLight.svg"
                     />                                
                 </div>
             </div>

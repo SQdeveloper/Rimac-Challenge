@@ -8,7 +8,7 @@ interface Props {
 const ButtonBack: React.FC<Props> = ({url}) => {
     return (
         <Link to={url} className={styles.button}>
-            <img src="src/assets/icons/Icon-button.svg" alt="chevron-left" />
+            <img src="/icons/Icon-button.svg" alt="chevron-left" />
             <span>Volver</span>
         </Link>
     );
