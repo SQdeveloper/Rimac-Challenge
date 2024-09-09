@@ -22,7 +22,7 @@ const Summary = () => {
                     <aside className={styles.summary__header}>
                         <span>precios calculados para:</span>
                         <div>
-                            <img src="src/assets/icons/gl_family-24x24.svg" alt="icon-person" />
+                            <img src="/icons/gl_family-24x24.svg" alt="icon-person" />
                             <h3>{user.name} {user.lastName}</h3>
                         </div>
                     </aside>

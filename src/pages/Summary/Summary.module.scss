@@ -6,13 +6,13 @@
     padding: 64px 216px;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 106px);    
+    min-height: calc(100vh - 106px);    
     gap: 48px;
     
     @media (max-width: 800px) {            
         padding: 24px 24px 60px;        
         gap: 40px;
-        height: calc(100svh - 148px);    
+        min-height: calc(100svh - 148px);    
         justify-content: center;
     }
 

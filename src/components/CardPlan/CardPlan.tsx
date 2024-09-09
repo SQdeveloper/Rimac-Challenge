@@ -15,7 +15,7 @@ const CardPlan:React.FC<Props> = ({ handleChangeInput, title, description, image
             <input onChange={handleChangeInput} name='options-plan' id={idInput} type="radio" />
             <label htmlFor={idInput}>
                 <div>
-                    <img src="src/assets/icons/check.svg" alt="check" />
+                    <img src="/icons/check.svg" alt="check" />
                 </div>
                 <aside>
                     <div>
