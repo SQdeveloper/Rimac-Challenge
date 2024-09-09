@@ -14,7 +14,7 @@ interface Props {
 const CardPlanDetails: React.FC<Props> = ({ isRecommend, input, plan, urlImg}) => {
     const { name, description, price } = plan;
     const descPrice = price - price*5/100;
-    const { setSelectedPlan } = useUser();
+    const { updatePlan } = useUser();
     const navigate = useNavigate();
 
     const handleSelectPlan = ()=>{
@@ -22,7 +22,7 @@ const CardPlanDetails: React.FC<Props> = ({ isRecommend, input, plan, urlImg}) =
 
         if(input) newPlan = {...plan, price: descPrice}        
 
-        setSelectedPlan(newPlan);
+        updatePlan(newPlan);
         navigate('/resumen')
     }
 

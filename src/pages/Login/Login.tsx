@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import styles from './Login.module.scss'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
@@ -15,9 +15,13 @@ const Login = () => {
     const [errorComunication, setErrorComunication] = useState(false);
     const [privacityPolicy, setPrivacityPolicy] = useState(false);
     const [comunicationPolicy, setComunicationPolicy] = useState(false);
-    const { login } = useAuth();
-    const { updateUser, fetchUserData } = useUser();
+    const { login, logout } = useAuth();
+    const { updateUser } = useUser();
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        logout();
+    },[])
 
     const handleChangeDocumentType = (e:ChangeEvent<HTMLSelectElement>)=>{
         const value = e.target.value as document;        
@@ -85,8 +89,7 @@ const Login = () => {
         if (hasErrors) return;
 
         //Guardar datos del formulario
-        updateUser({ document, number, documentType });
-        fetchUserData();
+        updateUser({ document, number, documentType });        
 
         //Confirmo la autenticación
         login();

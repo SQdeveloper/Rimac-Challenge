@@ -8,31 +8,48 @@ interface UserContextType {
   updateUser: (data: Partial<User>) => void;
   fetchUserData: () => Promise<void>;
   selectedPlan: Plans;
-  setSelectedPlan: Dispatch<SetStateAction<Plans>>;
+  updatePlan: (data: Plans) => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [selectedPlan, setSelectedPlan] = useState<Plans>({
-    name: '',
-    age: 0,
-    description: [''],
-    price: 0
-  });
+  const [selectedPlan, setSelectedPlan] = useState<Plans>(()=>{
+    const _plan = localStorage.getItem('__plan__');
+    return _plan ? JSON.parse(_plan) :
+    {
+      name: '',
+      age: 0,
+      description: [''],
+      price: 0
+    }
+  }
+);
 
-  const [user, setUser] = useState<User>({
-    document: '',
-    number: '',
-    documentType: 'dni'
+  const [user, setUser] = useState<User>(()=>{
+    const _user = localStorage.getItem('__user__');
+    return _user ? JSON.parse(_user) :
+    {
+      document: '',
+      number: '',
+      documentType: 'dni'
+    }
   });  
 
   const updateUser = (data: Partial<User>) => {
-    setUser(prev => ({ ...prev, ...data }));    
+    setUser(prev =>{
+      const result = {...prev, ...data };
+      localStorage.setItem('__user__', JSON.stringify(result));
+      return result
+    });    
+  };
+  const updatePlan = (data: Plans) => {
+    localStorage.setItem('__plan__', JSON.stringify(data));
+    setSelectedPlan(data)
   };
 
   const fetchUserData = async () => {
-    try {
+    try {      
       const data = await fetchUserService('user');
       updateUser({
         name: data.name,
@@ -45,7 +62,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, updateUser, fetchUserData, selectedPlan, setSelectedPlan }}>
+    <UserContext.Provider value={{ user, updateUser, fetchUserData, selectedPlan, updatePlan }}>
       {children}
     </UserContext.Provider>
   );
