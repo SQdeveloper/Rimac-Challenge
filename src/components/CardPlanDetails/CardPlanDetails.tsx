@@ -8,35 +8,42 @@ interface Props {
     plan: Plans
     urlImg: string
     input: boolean
+    isRecommend?: boolean
 }
 
-const CardPlanDetails: React.FC<Props> = ({input, plan, urlImg}) => {
+const CardPlanDetails: React.FC<Props> = ({ isRecommend, input, plan, urlImg}) => {
     const { name, description, price } = plan;
+    const descPrice = price - price*5/100;
     const { setSelectedPlan } = useUser();
     const navigate = useNavigate();
 
     const handleSelectPlan = ()=>{
         let newPlan = plan;
-        if(input) {
-            newPlan = {...plan, price: plan.price - plan.price*5/100}
-        }
+
+        if(input) newPlan = {...plan, price: descPrice}        
+
         setSelectedPlan(newPlan);
         navigate('/resumen')
     }
 
     return (
         <div className={styles.card}>
-            <div className={styles.card__header}>
-                <aside>
-                    <h3>{name}</h3>
+            <div className={styles.card__hero}>                
+                <span className={`${styles.card__recommend} ${!isRecommend && `${styles['card__recommend--hidden']}`}`}>Plan recomendado</span>                                                                
+                <div className={styles.card__header}>
+                    <aside>
+                        <h3>{name}</h3>
+                        <div>
+                            <div>costo del plan</div>
+                            {
+                                input && <span className={styles.desc}>${price} antes</span>
+                            }
+                            <span>${input ? descPrice : price} al mes</span>
+                        </div>
+                    </aside>
                     <div>
-                        <div>costo del plan</div>
-
-                        <span>${price} al mes</span>
+                        <img src={urlImg} alt="icon" />
                     </div>
-                </aside>
-                <div>
-                    <img src={urlImg} alt="icon" />
                 </div>
             </div>
             <hr />
@@ -45,7 +52,10 @@ const CardPlanDetails: React.FC<Props> = ({input, plan, urlImg}) => {
                     {
                         description.map((text,index)=>(
                             <li key={index}>
-                                <span>{cutText(text)}</span> {cutSecondText(text)}
+                                • 
+                                <div>
+                                    <span>{cutText(text)}</span> {cutSecondText(text)}
+                                </div>
                             </li>
                         ))
                     }                    

@@ -28,6 +28,9 @@
             }
 
             > div {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
                 font-weight: 700;
                 
                 div {
@@ -35,8 +38,17 @@
                     color: $color-gray-purple;   
                     text-transform: uppercase;
                 }
+
                 span {                    
-                    font-size: 20px;                    
+                    font-size: 20px;                            
+                    
+                }
+
+                .desc {
+                    font-size: 14px;                    
+                    color: $color-gray-purple;
+                    font-weight: 400;
+                    text-decoration: line-through;
                 }
             }
         }
@@ -64,8 +76,9 @@
             flex-direction: column;
             gap: 24px;
 
-            li {
-                list-style: disc;
+            li {      
+                display: flex;
+                gap: 12px;          
 
                 span {
                     font-weight: bold;
@@ -83,4 +96,26 @@
         font-size: 18px;
         font-weight: 700;
     }
+
+    &__recommend {
+        background-color: $color-green-light;
+        color: $color-black;
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-weight: 900;
+        font-size: 12px;
+        width: fit-content;
+
+        &--hidden {
+            opacity: 0;
+            user-select: none;
+            pointer-events: none;
+        }
+    }
+
+    &__hero {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }    
 }

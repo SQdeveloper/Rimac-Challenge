@@ -15,10 +15,12 @@ const Plans = () => {
 
     const handleChangeInputForMe = (e: ChangeEvent<HTMLInputElement>)=>{
         setInputForMe(e.target.checked)        
+        setInputForsomeone(false)
     }
-
+    
     const handleChangeInputForsomeone = (e: ChangeEvent<HTMLInputElement>)=>{
         setInputForsomeone(e.target.checked)
+        setInputForMe(false)        
     }
 
     const urls = [
@@ -70,6 +72,7 @@ const Plans = () => {
                                         plan={plan}
                                         urlImg={urls[index]}
                                         input={inputForsomeone}
+                                        isRecommend={index === 1}
                                     />
                                 ))
                         }                   
