@@ -1,0 +1,94 @@
+@import '../../styles/variables';
+
+.summary {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 64px 216px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 106px);    
+    gap: 48px;
+    
+    @media (max-width: 800px) {            
+        padding: 24px 24px 60px;        
+        gap: 40px;
+        height: calc(100svh - 148px);    
+        justify-content: center;
+    }
+
+    h2 {
+        font-weight: 700;
+        font-size: 40px;
+
+        @media (max-width: 640px) {            
+            font-size: 32px;
+        }
+    }
+    
+    > div {
+        background-color: white;
+        display: flex;
+        border-radius: 24px;
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px 32px;
+        box-shadow: 0px 1px 24px 0px rgba(174, 172, 243, 0.25);        
+
+        hr {
+            border: none;
+            border-bottom: 1px solid #D7DBF5;
+        }
+
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            h3 {
+                font-size: 16px;
+                font-weight: 700;
+            }
+
+            div {
+                display: flex;
+                gap: 5px;
+
+                span {
+                    text-transform: uppercase;
+                }
+            }
+
+            span {
+                font-size: 14px;
+                font-weight: 400;
+            }            
+        }
+
+        .summary__header {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            span {
+                font-weight: 900;
+                font-size: 10px;
+                text-transform: uppercase;
+            }
+
+            div {
+                display: flex;
+                gap: 12px;
+                align-items: end;
+                
+                h3 {
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+.content {
+    background-color: $color-purple-light;
+}

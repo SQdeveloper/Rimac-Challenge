@@ -1,0 +1,99 @@
+@import '../../styles/variables';
+
+.bread {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-purple;
+    padding: 16px 0;
+    font-size: 16px;
+    margin-top: 64px;    
+    gap: 16px;
+    color: $color-gray-purple;
+    
+    @media (max-width: 640px) {            
+        margin-top: 64px;    
+        background-color: $color-purple-light;
+        justify-content: space-between;
+        padding: 16px 24px;
+    }
+
+    > div {
+        display: flex;        
+        gap: 16px;        
+
+        @media (max-width: 640px) {            
+            display: none;
+        }
+    }
+
+    &__number {
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+        border-radius: 100%;
+        width: 24px;
+        height: 24px;
+        padding-bottom: 4px;
+        font-size: 12px;        
+        border: 1px solid $color-gray-purple;            
+        color: $color-gray-purple;            
+        background-color: transparent;
+    }
+
+    &__content {
+        &--active {
+            span {
+                font-weight: 700;
+                color: $color-black
+            }
+            
+            div {
+                border: none;
+                background-color: $color-purple-strong;
+                color: white;
+            }
+        }                
+    }
+
+    &__responsive--img {
+        display: none;
+
+        @media (max-width: 640px) {            
+            display: block;
+        }
+    }
+    &__responsive--span {
+        display: none;
+        font-size: 10px;
+        text-transform: uppercase;
+        font-weight: 900;
+
+        @media (max-width: 640px) {            
+            display: block;
+        }
+    }
+    
+    .bread__responsive--bar {
+        display: none;
+        width: 212px;
+        height: 6px;
+        background-color: $color-purple;
+        border-radius: 20px;
+        overflow: hidden;
+
+        &--active {
+            justify-content: end;
+        }
+
+        div {
+            width: 50%;
+            height: 100%;
+            background-color: $color-purple-strong;
+        }
+
+        @media (max-width: 640px) {            
+            display: flex;
+        }
+    }    
+}

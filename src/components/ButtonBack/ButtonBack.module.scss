@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+
+.button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    color: $color-purple-strong;
+    margin: 0 auto;
+    max-width: 928px;
+    width: 100%;
+
+    @media (max-width: 640px) {            
+        display: none;
+    }
+}
