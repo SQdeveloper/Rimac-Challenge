@@ -3,8 +3,7 @@ import styles from './Login.module.scss'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
 import { useUser } from '../../context/userContext';
-
-export type document = 'dni' | 'ruc';
+import { document } from '../../types/user';
 
 const Login = () => {
     const [documentType, setDocumentType] = useState<document>('dni');
@@ -86,7 +85,7 @@ const Login = () => {
         if (hasErrors) return;
 
         //Guardar datos del formulario
-        updateUser({ document, number });
+        updateUser({ document, number, documentType });
         fetchUserData();
 
         //Confirmo la autenticación

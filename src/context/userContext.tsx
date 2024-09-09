@@ -1,15 +1,7 @@
-// UserContext.tsx
 import { createContext, useState, useContext, SetStateAction, Dispatch } from 'react';
-import { fetchData as fetchUserService } from '../services/userService'; // Importar el servicio
+import { fetchData as fetchUserService } from '../services/userService';
 import { Plans } from '../types/plans';
-
-interface User {
-  document: string;
-  number: string;
-  name?: string;
-  lastName?: string;
-  birthday?: string;
-}
+import { User } from '../types/user';
 
 interface UserContextType {
   user: User;
@@ -32,6 +24,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User>({
     document: '',
     number: '',
+    documentType: 'dni'
   });  
 
   const updateUser = (data: Partial<User>) => {

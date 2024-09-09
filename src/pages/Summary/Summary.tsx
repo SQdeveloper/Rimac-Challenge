@@ -29,7 +29,10 @@ const Summary = () => {
                     <hr />
                     <aside>
                         <h3>Responsable de pago</h3>
-                        <span>DNI: {user.document}</span>
+                        <div>
+                            <span>{user.documentType}:</span>
+                            <span>{user.document}</span>
+                        </div>
                         <span>Celular: {user.number}</span>
                     </aside>
                     <aside>

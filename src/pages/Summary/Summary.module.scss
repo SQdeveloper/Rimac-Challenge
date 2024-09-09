@@ -37,6 +37,15 @@
                 font-weight: 700;
             }
 
+            div {
+                display: flex;
+                gap: 5px;
+
+                span {
+                    text-transform: uppercase;
+                }
+            }
+
             span {
                 font-size: 14px;
                 font-weight: 400;
