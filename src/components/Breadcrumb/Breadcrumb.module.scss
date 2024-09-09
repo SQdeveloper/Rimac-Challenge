@@ -82,6 +82,10 @@
         border-radius: 20px;
         overflow: hidden;
 
+        &--active {
+            justify-content: end;
+        }
+
         div {
             width: 50%;
             height: 100%;
@@ -89,7 +93,7 @@
         }
 
         @media (max-width: 640px) {            
-            display: block;
+            display: flex;
         }
     }    
 }

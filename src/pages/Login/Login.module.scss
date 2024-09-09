@@ -181,6 +181,12 @@
                 }
             }
 
+            div {                
+                img {
+                    display: none;
+                }
+            }
+
             input + label > div {
                 border: 1px solid black;
                 width: 16px;
@@ -189,11 +195,16 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
             }
             
             input:checked + label > div {
                 background-color: $color-black;                
                 border: 1px solid black;
+                
+                img {
+                    display: block;
+                }
             }
 
             input:checked + label > span {

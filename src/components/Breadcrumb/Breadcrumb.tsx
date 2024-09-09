@@ -22,7 +22,7 @@ const Breadcrumb: React.FC<Props> = ({url, next, prev}) => {
                 <img className={styles['bread__responsive--img']} src="src/assets/icons/atoms-button-circle-icons-web.svg" alt="chevron-left" />
             </a>
             <span className={styles['bread__responsive--span']}>paso 1 de 2</span>
-            <div className={styles['bread__responsive--bar']}>
+            <div className={`${styles['bread__responsive--bar']} ${next && styles['bread__responsive--bar--active']}`}>
                 <div></div>
             </div>
         </div>

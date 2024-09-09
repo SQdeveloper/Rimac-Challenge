@@ -14,7 +14,7 @@ const Summary = () => {
 
     return (
         <div className={styles.content}>
-            <Breadcrumb next/>
+            <Breadcrumb url="/Planes" next/>
             <section className={styles.summary}>
                 <ButtonBack url="/Planes"/>
                 <h2>Resumen del seguro</h2>
