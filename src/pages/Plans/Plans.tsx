@@ -32,7 +32,7 @@ const Plans = () => {
     return (
         user &&                 
         <div className={styles.plans}>
-        <Breadcrumb prev/>
+        <Breadcrumb prev url="/"/>
         <div className={styles.plans__content}>
             <ButtonBack url="/"/>
             <div className={styles.plans__main}>

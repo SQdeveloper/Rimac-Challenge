@@ -10,11 +10,21 @@
     margin-top: 64px;    
     gap: 16px;
     color: $color-gray-purple;
-
+    
+    @media (max-width: 640px) {            
+        margin-top: 64px;    
+        background-color: $color-purple-light;
+        justify-content: space-between;
+        padding: 16px 24px;
+    }
 
     > div {
         display: flex;        
         gap: 16px;        
+
+        @media (max-width: 640px) {            
+            display: none;
+        }
     }
 
     &__number {
@@ -45,4 +55,41 @@
             }
         }                
     }
+
+    &__responsive--img {
+        display: none;
+
+        @media (max-width: 640px) {            
+            display: block;
+        }
+    }
+    &__responsive--span {
+        display: none;
+        font-size: 10px;
+        text-transform: uppercase;
+        font-weight: 900;
+
+        @media (max-width: 640px) {            
+            display: block;
+        }
+    }
+    
+    .bread__responsive--bar {
+        display: none;
+        width: 212px;
+        height: 6px;
+        background-color: $color-purple;
+        border-radius: 20px;
+        overflow: hidden;
+
+        div {
+            width: 50%;
+            height: 100%;
+            background-color: $color-purple-strong;
+        }
+
+        @media (max-width: 640px) {            
+            display: block;
+        }
+    }    
 }

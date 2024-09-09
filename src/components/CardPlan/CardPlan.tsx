@@ -18,8 +18,10 @@ const CardPlan:React.FC<Props> = ({ handleChangeInput, title, description, image
                     <img src="src/assets/icons/check.svg" alt="check" />
                 </div>
                 <aside>
-                    <img src={image} alt="icon" />
-                    <h3>{ title }</h3>
+                    <div>
+                        <img src={image} alt="icon" />
+                        <h3>{ title }</h3>
+                    </div>
                     <p>{ description }</p>
                 </aside>
             </label>

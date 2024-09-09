@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, SetStateAction, Dispatch } from 'react';
+import { createContext, useState, useContext } from 'react';
 import { fetchData as fetchUserService } from '../services/userService';
 import { Plans } from '../types/plans';
 import { User } from '../types/user';

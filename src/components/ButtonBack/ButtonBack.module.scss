@@ -9,4 +9,8 @@
     margin: 0 auto;
     max-width: 928px;
     width: 100%;
+
+    @media (max-width: 640px) {            
+        display: none;
+    }
 }
