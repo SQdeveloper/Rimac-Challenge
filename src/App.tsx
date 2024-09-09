@@ -7,6 +7,7 @@ import Plans from './pages/Plans/Plans'
 import { AuthProvider } from './context/authContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import { UserProvider } from './context/userContext'
+import Summary from './pages/Summary/Summary'
 
 function App() {  
 
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Login/>}/>          
             <Route path="/Planes" element={<ProtectedRoute component={<Plans />} />} />          
+            <Route path="/resumen" element={<ProtectedRoute component={<Summary />} />} />          
           </Routes>
           <Footer/>
         </Router>

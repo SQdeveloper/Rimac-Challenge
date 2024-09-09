@@ -25,13 +25,14 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [selectedPlan, setSelectedPlan] = useState<Plans>({
     name: '',
     age: 0,
-    description: '',
+    description: [''],
     price: 0
   });
+
   const [user, setUser] = useState<User>({
     document: '',
     number: '',
-  });
+  });  
 
   const updateUser = (data: Partial<User>) => {
     setUser(prev => ({ ...prev, ...data }));    

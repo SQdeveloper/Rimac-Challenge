@@ -1,21 +1,28 @@
+import { useNavigate } from 'react-router-dom';
 import { Plans } from '../../types/plans';
+import { cutSecondText, cutText } from '../../utils/cutText';
 import styles from './CardPlanDetails.module.scss';
+import { useUser } from '../../context/userContext';
 
 interface Props {
     plan: Plans
+    urlImg: string
+    input: boolean
 }
 
-const cutText = (text: string)=>{    
-    let firsttext = text.split(" ").slice(0, 3).join(" ");
-    return firsttext;   
-}
-const cutSecondText = (text: string)=>{    
-    let result = text.split(" ").slice(3, -1).join(" ");
-    return result;   
-}
-
-const CardPlanDetails: React.FC<Props> = ({ plan}) => {
+const CardPlanDetails: React.FC<Props> = ({input, plan, urlImg}) => {
     const { name, description, price } = plan;
+    const { setSelectedPlan } = useUser();
+    const navigate = useNavigate();
+
+    const handleSelectPlan = ()=>{
+        let newPlan = plan;
+        if(input) {
+            newPlan = {...plan, price: plan.price - plan.price*5/100}
+        }
+        setSelectedPlan(newPlan);
+        navigate('/resumen')
+    }
 
     return (
         <div className={styles.card}>
@@ -24,11 +31,12 @@ const CardPlanDetails: React.FC<Props> = ({ plan}) => {
                     <h3>{name}</h3>
                     <div>
                         <div>costo del plan</div>
+
                         <span>${price} al mes</span>
                     </div>
                 </aside>
                 <div>
-                    <img src="src/assets/icons/IcAddUserLight.svg" alt="icon" />
+                    <img src={urlImg} alt="icon" />
                 </div>
             </div>
             <hr />
@@ -42,7 +50,12 @@ const CardPlanDetails: React.FC<Props> = ({ plan}) => {
                         ))
                     }                    
                 </ul>
-                <button className={styles.card__button}>Seleccionar Plan</button>
+                <button  
+                    className={styles.card__button}
+                    onClick={handleSelectPlan}
+                >
+                    Seleccionar Plan
+                </button>
             </div>
         </div>
     );

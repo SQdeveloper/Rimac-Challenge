@@ -1,3 +1,4 @@
+import { ChangeEventHandler } from 'react';
 import styles from './CardPlan.module.scss';
 
 interface Props {
@@ -5,12 +6,13 @@ interface Props {
     description: string,
     image: string
     idInput: string
+    handleChangeInput: ChangeEventHandler
 }
 
-const CardPlan:React.FC<Props> = ({title, description, image, idInput}) => {
+const CardPlan:React.FC<Props> = ({ handleChangeInput, title, description, image, idInput}) => {
     return (
         <div className={styles.card}>
-            <input name='options-plan' id={idInput} type="radio" />
+            <input onChange={handleChangeInput} name='options-plan' id={idInput} type="radio" />
             <label htmlFor={idInput}>
                 <div>
                     <img src="src/assets/icons/check.svg" alt="check" />

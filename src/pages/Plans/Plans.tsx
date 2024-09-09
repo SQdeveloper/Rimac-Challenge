@@ -5,11 +5,28 @@ import CardPlan from "../../components/CardPlan/CardPlan";
 import CardPlanDetails from "../../components/CardPlanDetails/CardPlanDetails";
 import usePlans from "../../hooks/usePlans";
 import { useUser } from "../../context/userContext";
+import { ChangeEvent, useState } from "react";
 
 const Plans = () => {    
     const { user } = useUser();        
     const { plans } = usePlans();
-    
+    const [inputForMe, setInputForMe] = useState(false);
+    const [inputForsomeone, setInputForsomeone] = useState(false);
+
+    const handleChangeInputForMe = (e: ChangeEvent<HTMLInputElement>)=>{
+        setInputForMe(e.target.checked)        
+    }
+
+    const handleChangeInputForsomeone = (e: ChangeEvent<HTMLInputElement>)=>{
+        setInputForsomeone(e.target.checked)
+    }
+
+    const urls = [
+        'src/assets/icons/IcHomeLight.svg',
+        'src/assets/icons/IcHospitalLight.svg',
+        'src/assets/icons/IcHomeLight.svg'
+    ]
+
     return (
         <div className={styles.plans}>
             <Breadcrumb prev/>
@@ -26,13 +43,15 @@ const Plans = () => {
                         <p>Selecciona la opción que se ajuste más a tus necesidades.</p>                    
                     </aside>
                     <div className={styles.plans__options}>        
-                        <CardPlan 
+                        <CardPlan
+                            handleChangeInput={handleChangeInputForMe}
                             idInput="for-me"
                             title="Para mí" 
                             description="Cotiza tu seguro de salud y agrega familiares si así lo deseas." 
                             image="src/assets/icons/IcProtectionLight.svg"
-                        />                                
+                            />                                
                         <CardPlan 
+                            handleChangeInput={handleChangeInputForsomeone}
                             idInput="for-someone"
                             title="Para alguien más" 
                             description="Realiza una cotización para uno de tus familiares o cualquier persona." 
@@ -40,15 +59,23 @@ const Plans = () => {
                         />                                
                     </div>
                 </div>
-            </div >
-            <div className={styles.plans__details}>
                 {
-                    plans && plans.length > 0 &&
-                        plans.map((plan, index) => (
-                            <CardPlanDetails key={index} plan={plan}/>
-                        ))
-                }                   
-            </div>
+                    (inputForMe || inputForsomeone) &&
+                    <div className={styles.plans__details}>
+                        {
+                            plans && plans.length > 0 &&
+                                plans.map((plan, index) => (
+                                    <CardPlanDetails 
+                                        key={index} 
+                                        plan={plan}
+                                        urlImg={urls[index]}
+                                        input={inputForsomeone}
+                                    />
+                                ))
+                        }                   
+                    </div>
+                }
+            </div >
         </div>
     );
 };

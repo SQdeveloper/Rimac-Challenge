@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 
 .card {    
-    flex: 1;
+    flex: 1;    
 
     input {
         display: none;
@@ -26,6 +26,7 @@
         overflow: hidden;
         border: 3px solid white;
         box-shadow: 0px 1px 32px 0px rgba(174, 172, 243, 0.35);
+        cursor: pointer;
 
         > div {
             display: flex;
