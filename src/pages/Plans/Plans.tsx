@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import styles from './Plans.module.scss';
 import CardPlan from "../../components/CardPlan/CardPlan";

@@ -8,10 +8,13 @@
     background-color: $color-purple-light;
 
     &__content {
-        max-width: 1360px;
-        padding: 0 120px;
+        max-width: 1360px;        
         width: 100%;
         margin: 0 auto;
+        padding: 64px 216px;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
     }    
 
     &__main {
