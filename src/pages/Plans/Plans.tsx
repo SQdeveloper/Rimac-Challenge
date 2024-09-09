@@ -6,6 +6,7 @@ import CardPlanDetails from "../../components/CardPlanDetails/CardPlanDetails";
 import usePlans from "../../hooks/usePlans";
 import { useUser } from "../../context/userContext";
 import { ChangeEvent, useState } from "react";
+import ButtonBack from "../../components/ButtonBack/ButtonBack";
 
 const Plans = () => {    
     const { user } = useUser();        
@@ -30,56 +31,54 @@ const Plans = () => {
     ]
 
     return (
+        user &&                 
         <div className={styles.plans}>
-            <Breadcrumb prev/>
-            <div className={styles.plans__content}>
-                <Link to={'/'} className={styles.plans__back}>
-                    <img src="src/assets/icons/Icon-button.svg" alt="chevron-left" />
-                    <span>Volver</span>
-                </Link>
-                <div className={styles.plans__main}>
-                    <aside>
-                        <h2>
-                            {user.name} ¿Para quién deseas cotizar?
-                        </h2>
-                        <p>Selecciona la opción que se ajuste más a tus necesidades.</p>                    
-                    </aside>
-                    <div className={styles.plans__options}>        
-                        <CardPlan
-                            handleChangeInput={handleChangeInputForMe}
-                            idInput="for-me"
-                            title="Para mí" 
-                            description="Cotiza tu seguro de salud y agrega familiares si así lo deseas." 
-                            image="src/assets/icons/IcProtectionLight.svg"
-                            />                                
-                        <CardPlan 
-                            handleChangeInput={handleChangeInputForsomeone}
-                            idInput="for-someone"
-                            title="Para alguien más" 
-                            description="Realiza una cotización para uno de tus familiares o cualquier persona." 
-                            image="src/assets/icons/IcAddUserLight.svg"
+        <Breadcrumb prev/>
+        <div className={styles.plans__content}>
+            <ButtonBack url="/"/>
+            <div className={styles.plans__main}>
+                <aside>
+                    <h2>
+                        {user.name} ¿Para quién deseas cotizar?
+                    </h2>
+                    <p>Selecciona la opción que se ajuste más a tus necesidades.</p>                    
+                </aside>
+                <div className={styles.plans__options}>        
+                    <CardPlan
+                        handleChangeInput={handleChangeInputForMe}
+                        idInput="for-me"
+                        title="Para mí" 
+                        description="Cotiza tu seguro de salud y agrega familiares si así lo deseas." 
+                        image="src/assets/icons/IcProtectionLight.svg"
                         />                                
-                    </div>
+                    <CardPlan 
+                        handleChangeInput={handleChangeInputForsomeone}
+                        idInput="for-someone"
+                        title="Para alguien más" 
+                        description="Realiza una cotización para uno de tus familiares o cualquier persona." 
+                        image="src/assets/icons/IcAddUserLight.svg"
+                    />                                
                 </div>
-                {
-                    (inputForMe || inputForsomeone) &&
-                    <div className={styles.plans__details}>
-                        {
-                            plans && plans.length > 0 &&
-                                plans.map((plan, index) => (
-                                    <CardPlanDetails 
-                                        key={index} 
-                                        plan={plan}
-                                        urlImg={urls[index]}
-                                        input={inputForsomeone}
-                                        isRecommend={index === 1}
-                                    />
-                                ))
-                        }                   
-                    </div>
-                }
-            </div >
-        </div>
+            </div>
+            {
+                (inputForMe || inputForsomeone) &&
+                <div className={styles.plans__details}>
+                    {
+                        plans && plans.length > 0 &&
+                            plans.map((plan, index) => (
+                                <CardPlanDetails 
+                                    key={index} 
+                                    plan={plan}
+                                    urlImg={urls[index]}
+                                    input={inputForsomeone}
+                                    isRecommend={index === 1}
+                                />
+                            ))
+                    }                   
+                </div>
+            }
+        </div >
+    </div>                
     );
 };
 

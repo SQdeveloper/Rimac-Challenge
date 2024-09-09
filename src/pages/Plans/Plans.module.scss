@@ -2,8 +2,7 @@
 
 .plans {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: column;    
     padding: 0 0 4rem;
 
     background-color: $color-purple-light;
@@ -11,17 +10,9 @@
     &__content {
         max-width: 1360px;
         padding: 0 120px;
+        width: 100%;
         margin: 0 auto;
-    }
-
-    &__back {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 18px;
-        color: $color-purple-strong;
-        margin: 3rem 0;
-    }
+    }    
 
     &__main {
         max-width: 544px;

@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    color: $color-purple-strong;
+    margin: 3rem auto;
+    max-width: 928px;
+    width: 100%;
+}
