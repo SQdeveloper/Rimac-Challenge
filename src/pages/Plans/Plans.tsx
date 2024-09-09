@@ -11,7 +11,7 @@ const Plans = () => {
     const { user } = useUser();        
     const { plans } = usePlans();
     const [inputForMe, setInputForMe] = useState(false);
-    const [inputForsomeone, setInputForsomeone] = useState(false);
+    const [inputForsomeone, setInputForsomeone] = useState(false);        
 
     const handleChangeInputForMe = (e: ChangeEvent<HTMLInputElement>)=>{
         setInputForMe(e.target.checked)        

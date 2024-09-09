@@ -9,7 +9,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import { UserProvider } from './context/userContext'
 import Summary from './pages/Summary/Summary'
 
-function App() {  
+function App() {    
 
   return (
     <AuthProvider>     
@@ -17,9 +17,20 @@ function App() {
         <Router>
           <Header/>
           <Routes>
-            <Route path='/' element={<Login/>}/>          
-            <Route path="/Planes" element={<ProtectedRoute component={<Plans />} />} />          
-            <Route path="/resumen" element={<ProtectedRoute component={<Summary />} />} />          
+            <Route path='/' element={<Login/>}/>                      
+            <Route 
+              path="/Planes" 
+              element={
+              <ProtectedRoute>
+                <Plans /> 
+              </ProtectedRoute>}                 
+            />          
+            <Route 
+              path="/resumen" 
+              element={
+              <ProtectedRoute>
+                <Summary /> 
+              </ProtectedRoute>} />          
           </Routes>
           <Footer/>
         </Router>

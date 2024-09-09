@@ -223,6 +223,11 @@
         width: fit-content;
         padding: 20px 40px;
         cursor: pointer;
+        transition: background-color .3s;
+
+        &:hover  {
+            background-color: $color-red-carmesi;
+        }
 
         @media (max-width: 768px) {
             width: 100%;
