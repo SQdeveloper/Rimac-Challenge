@@ -3,6 +3,6 @@ export const cutText = (text: string)=>{
     return firsttext;   
 }
 export const cutSecondText = (text: string)=>{    
-    let result = text.split(" ").slice(3, -1).join(" ");
+    let result = text.split(" ").slice(3).join(" ");
     return result;   
 }
