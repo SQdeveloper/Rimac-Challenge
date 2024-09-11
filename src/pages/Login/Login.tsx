@@ -1,9 +1,9 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import styles from './Login.module.scss'
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/authContext';
-import { useUser } from '../../context/userContext';
-import { document } from '../../types/user';
+import { useAuth } from '../../context/authContext.js';
+import { useUser } from '../../context/userContext.js';
+import { document } from '../../types/user.js';
 
 const Login = () => {
     const [documentType, setDocumentType] = useState<document>('dni');
@@ -173,7 +173,7 @@ const Login = () => {
                     </div>
                     <div className={styles.login__contentChecks}>
                         <div>
-                            <input onChange={handleChangePrivacityPolicy} id='privacity' type="checkbox"/>
+                            <input onChange={handleChangePrivacityPolicy} id='privacity' data-testid="input-privacity-policy" type="checkbox"/>
                             <label 
                                 htmlFor="privacity" 
                                 className={`${errorPrivacity && `${styles['login__input--error']}`}`}
@@ -185,7 +185,7 @@ const Login = () => {
                             </label>                            
                         </div>                    
                         <div>
-                            <input onChange={handleChangeComunicationPolicy} id='comunicacion' type="checkbox"/>
+                            <input onChange={handleChangeComunicationPolicy} data-testid="input-comunication-policy"  id='comunicacion' type="checkbox"/>
                             <label 
                                 htmlFor="comunicacion"
                                 className={`${errorComunication && `${styles['login__input--error']}`}`}
