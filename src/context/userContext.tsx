@@ -1,7 +1,7 @@
 import { createContext, useState, useContext } from 'react';
-import { fetchData as fetchUserService } from '../services/userService';
-import { Plans } from '../types/plans';
-import { User } from '../types/user';
+import { fetchData as fetchUserService } from '../services/userService.js';
+import { Plans } from '../types/plans.js';
+import { User } from '../types/user.js';
 
 interface UserContextType {
   user: User;
@@ -11,7 +11,7 @@ interface UserContextType {
   updatePlan: (data: Plans) => void;
 }
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
+export const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [selectedPlan, setSelectedPlan] = useState<Plans>(()=>{
